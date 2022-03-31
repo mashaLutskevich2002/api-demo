@@ -3,7 +3,6 @@ import Button from "../Button/Button";
 import css from "./Header.module.css"
 import logo from "../Assets/Logo.svg"
 
-
 const Header = (props) => {
     return (
         <div className={css.header}>

@@ -19,7 +19,6 @@ const Banner = (props) => {
                     </p>
                     <Button name='Sign up'/>
                 </div>
-
             </div>
     )
 }
