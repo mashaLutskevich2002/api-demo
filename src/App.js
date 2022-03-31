@@ -1,9 +1,12 @@
-import './App.css';
+import Header from "./Header/Header";
+import css from "./App.module.css"
+import Banner from "./Banner/Banner";
 
 function App() {
   return (
-    <div className="App">
-      new app
+    <div className={css.body}>
+      <Header/>
+        <Banner/>
     </div>
   );
 }

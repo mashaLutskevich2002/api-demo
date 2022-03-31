@@ -1,0 +1,78 @@
+.banner{
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    background-image: url("../Assets/pexels-alexandr-podvalny-1227513.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.banner:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    opacity: 50%;
+    z-index: 2;
+}
+.text{
+    margin-top: 150px;
+    margin-bottom: 150px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    color: #fff;
+}
+.h1{
+    text-align: center;
+    font-size: 3.6em;
+    font-family: Gargi;
+    font-weight: lighter;
+    line-height: 1.2;
+}
+.p{
+    font-size: 1.5em;
+    font-family: Gargi;
+    text-align: center;
+    line-height: 2;
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 1280px) {
+    .text{
+        width: 30%;
+    }
+
+}
+
+
+@media screen and (min-width: 991px) and (max-width: 1279px){
+    .text{
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 990px) {
+    .text{
+        width: 90%;
+    }
+    .banner{
+        height: 70vh;
+    }
+    .h1{
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 1.2;
+    }
+    .p{
+        font-size: 0.5em;
+    }
+}
