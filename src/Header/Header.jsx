@@ -14,8 +14,6 @@ const Header = (props) => {
                 <div className={css.button}>
                     <Button name='Sign up'/>
                 </div>
-
-
             </div>
         </div>
     )

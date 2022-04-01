@@ -3,7 +3,7 @@ import css from "./Button.module.css"
 
 const Button = (props) => {
  return (
-        <input type='button' className={css.button} value={props.name}/>
+        <input onClick={props.onClick} disabled={props.disabled} type='button' className={css.button} value={props.name}/>
  )
 }
 
