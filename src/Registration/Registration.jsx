@@ -64,13 +64,14 @@ const Registration = (props) => {
                 }})
                 .then((response)=> response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if(data.success) {
                     } else {
                         // proccess server errors } })
                     }
-                }) .catch((error) => console.log(error));
-
+                })
+                .catch((error) => console.log(error));
+    // .then( props.getUsers())
         }
 
 
