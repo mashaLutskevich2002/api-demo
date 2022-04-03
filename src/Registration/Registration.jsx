@@ -4,6 +4,7 @@ import css from "./Registration.module.css"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import {getData, postData} from "../Request/fetchData";
+import {useForm} from "react-hook-form";
 
 const Registration = (props) => {
     const [position, setPosition] = useState([])
@@ -41,15 +42,17 @@ const Registration = (props) => {
 
     useEffect(() => {
         getPosition();
+
     }, []);
 
-    const postUser = async () =>{
+    const postUser = async () => {
         return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', getToken, addFormData)
     }
 
-    const submit = (e) => {
+    const submit = async(e) => {
         e.preventDefault()
-        postUser()
+        await postUser()
+        props.setNewUser(true)
     }
 
     const handleString = (e) =>{
@@ -67,7 +70,7 @@ const Registration = (props) => {
     return (
         <div className={css.registration}>
             <h1 className={css.h1}>Working with Post request</h1>
-            <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name'/>
+            <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name' />
             <Input placeholder='Email' onChange={(e)=>handleString(e)} id='email'/>
             <div className={css.phoneBlock}>
                 <Input placeholder='Phone' onChange={(e)=>handleString(e)} id='phone'/>
@@ -84,7 +87,7 @@ const Registration = (props) => {
             <div className={css.fileBlock}>
                 <input className={css.fileUpload} type="file" id='photo' onChange={(e)=>handleString(e)}/>
             </div>
-            <Button name='Sign up' onClick={(e) => submit(e)}/>
+            <Button name='Sign up' onClick={e => submit(e)}/>
         </div>
     )
 }
