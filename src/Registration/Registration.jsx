@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./Registration.module.css"
-import profilePhoto from "../Assets/photo-cover.svg"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
-
+import {getData, postData} from "../Request/fetchData";
 
 const Registration = (props) => {
     const [position, setPosition] = useState([])
@@ -18,62 +17,40 @@ const Registration = (props) => {
     })
 
     const getPosition = async () => {
-        try {
-            const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
-            const json = await response.json();
-            setPosition(json.positions)
-
-        }catch (error){
-            console.log(error)
-        }
+        let newPosition = await getData('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
+        setPosition([...newPosition.positions])
+        return position
     }
 
     const getToken = async () => {
-        try {
-            const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-            const json = await response.json();
-            setToken(json.token)
-            return json.token
-            // console.log(token)
-        }catch (error){
-            console.log(error)
-        }
+        let newToken = await getData('https://frontend-test-assignment-api.abz.agency/api/v1/token')
+        setToken(newToken.token)
+        return newToken.token
     }
 
-    useEffect(() => {
-        getToken().then((a)=>a)
-        getPosition();
-    }, []);
-
-    const postUser = async () => {
-        let formData = new FormData(); // file from input type='file'
+    const addFormData = () => {
+        let formData = new FormData();
         let fileField = document.querySelector('input[type="file"]');
         formData.append('position_id', data.position_id);
         formData.append('name', data.name);
         formData.append('email', data.email);
         formData.append('phone', data.phone);
         formData.append('photo', fileField.files[0]);
+        return formData
+    }
 
-        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users',
-            {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Token': await getToken().then((a)=>a.toString() )
+    useEffect(() => {
+        getPosition();
+    }, []);
 
-                }})
-                .then((response)=> response.json())
-                .then((data) => {
-                    // console.log(data);
-                    if(data.success) {
-                    } else {
-                        // proccess server errors } })
-                    }
-                })
-                .catch((error) => console.log(error));
-    // .then( props.getUsers())
-        }
+    const postUser = async () =>{
+        return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', getToken, addFormData)
+    }
 
+    const submit = (e) => {
+        e.preventDefault()
+        postUser()
+    }
 
     const handleString = (e) =>{
         const newData = { ...data }
@@ -85,11 +62,6 @@ const Registration = (props) => {
         const newData = { ...data }
         newData[e.target.id] = parseInt(e.target.value);
         setData(newData)
-    }
-
-    const submit = (e) => {
-        e.preventDefault()
-        postUser()
     }
 
     return (

@@ -2,41 +2,21 @@ import React, {useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./UsersBlock.module.css"
 import Card from "../Card/Card";
-import profilePhoto from "../Assets/photo-cover.svg"
-import {getUsers} from "../Request/getUsers";
+import {getData} from "../Request/fetchData";
 
 const UsersBlock = () => {
     const [data, setData] = useState([])
     const [limit, setLimit] = useState(6);
     const perCount = 100;
 
-    // getUsers(limit, setData)
-
-    // const getUsers = async ()=> {
-    //     try {
-    //         const response = await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?&count=${limit}`);
-    //         const json = await response.json();
-    //         setData(json.users)
-    //     }catch (error){
-    //         console.log(error)
-    //     }
-    //
-    // }
-
-    useEffect(() => {
-        // getUsers()
-        // parseUsers()
-        getUsers(`https:frontend-test-assignment-api.abz.agency/api/v1/users?&count=${limit}`, data);
-
-    }, [limit]);
-
-    const parseUsers= () => {
-        let arr = []
-        for (let i = 0; i < data.length; i++) {
-            arr = data[i].map(item => (<Card photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />));
-        }
-        return arr
+    const getUsers  = async () => {
+        let newData = await getData(`https:frontend-test-assignment-api.abz.agency/api/v1/users?&count=${limit}`);
+        return  setData([...newData.users])
     }
+
+    useEffect( () => {
+        getUsers()
+    }, [limit]);
 
     const loadMore = () => {
         setLimit((limit) =>  limit + 6);
@@ -47,10 +27,9 @@ const UsersBlock = () => {
             <h1 className={css.h1}>Working with GET request</h1>
             <div className={css.cardsBLock}>
                 {
-                    parseUsers()
-                    // data
-                    // // .sort((a,b) => a.registration_timestamp - b.registration_timestamp)
-                    // .map((item) => <Card photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />)
+                    data
+                    .sort((a,b) => b.registration_timestamp- a.registration_timestamp)
+                    .map((item) => <Card photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />)
                 }
             </div>
             {  data.length >= perCount - data.length

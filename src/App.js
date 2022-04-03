@@ -6,19 +6,12 @@ import Registration from "./Registration/Registration";
 import {useState} from "react";
 
 function App() {
-    const [user, setUser] = useState({})
-    const getUsers = (user) =>{
-        setUser(user)
-    }
+
   return (
     <div className={css.body}>
-
         <Header/>
-
         <Banner/>
-        <UsersBlock getUser={getUsers}/>
-        <p>{ JSON.stringify(user)}</p>
-        {console.log(JSON.stringify(user))}
+        <UsersBlock/>
         <Registration/>
     </div>
   );
