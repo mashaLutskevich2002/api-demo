@@ -31,7 +31,7 @@ const UsersBlock = () => {
     }, [limit]);
 
     const parseUsers= () => {
-        let arr = [...data]
+        let arr = []
         for (let i = 0; i < data.length; i++) {
             arr = data[i].map(item => (<Card photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />));
         }
