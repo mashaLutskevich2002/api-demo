@@ -2,13 +2,14 @@ import React, {useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./UsersBlock.module.css"
 import Card from "../Card/Card";
+import profilePhoto from "../Assets/photo-cover.svg"
 
 const UsersBlock = (props) => {
     const [data, setData] = useState([])
     const [limit, setLimit] = useState(6);
     const perCount = 100;
 
-    const getUsers = async ()=>{
+    const getUsers = async ()=> {
         try {
             const response = await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?&count=${limit}`);
             const json = await response.json();
@@ -31,7 +32,7 @@ const UsersBlock = (props) => {
             <h1 className={css.h1}>Working with GET request</h1>
             <div className={css.cardsBLock}>
                 {data
-                    .sort((a,b) => a.registration_timestamp - b.registration_timestamp)
+                    // .sort((a,b) => a.registration_timestamp - b.registration_timestamp)
                     .map((item) => <Card photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />)
                 }
             </div>

@@ -1,0 +1,18 @@
+.select{
+    display: flex;
+    width: 173px;
+    align-items: center;
+}
+
+.checkbox{
+    width: 15px;
+    height: 15px;
+    margin:0;
+    background: #00BDD3;
+    border: 1px solid #00BDD3;
+    box-sizing: border-box;
+}
+
+.position{
+    margin-left: 8px;
+}
