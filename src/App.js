@@ -3,7 +3,7 @@ import css from "./App.module.css"
 import Banner from "./Banner/Banner";
 import UsersBlock from "./UsersBlock/UsersBlock";
 import Registration from "./Registration/Registration";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getData} from "./Request/fetchData";
 
 function App() {
@@ -21,13 +21,17 @@ function App() {
         getUsers().then((newData)=>setData([...newData]))
     }, [limit, newUser, isPressLoadMore]);
 
+    const userGetRef = useRef(null)
+    const userPostRef = useRef(null)
+    const executeScroll = (ref) => ref.current.scrollIntoView()
+
     return (
         <div className={css.body}>
-            <Header/>
-            <Banner/>
-            <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit}
+            <Header executeScroll={executeScroll} userGetRef={userGetRef} userPostRef={userPostRef}/>
+            <Banner executeScroll={executeScroll} userPostRef={userPostRef}/>
+            <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit} userGetRef={userGetRef}
                         limit={limit} setNewUser={setNewUser} setIsPressLoadMore={setIsPressLoadMore}/>
-            <Registration setNewUser={setNewUser}/>
+            <Registration setNewUser={setNewUser} userPostRef={userPostRef}/>
         </div>
   );
 }

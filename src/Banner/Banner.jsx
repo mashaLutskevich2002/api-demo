@@ -11,13 +11,13 @@ const Banner = (props) => {
                     </h1>
                     <p className={css.p}>
                         What defines a good front-end developer is one that
-                        has skilled knoledge og HTML, CSS, JS with a vast
+                        has skilled knowledge og HTML, CSS, JS with a vast
                         understanding of User design thinking as they`ll be
                         building web interfaces with accessibility in mind.
                         They should also be excited to learn, as the world of
                         Front-End Development keeps evolving.
                     </p>
-                    <Button name='Sign up'/>
+                    <Button name='Sign up' onClick={()=> props.executeScroll(props.userPostRef)}/>
                 </div>
             </div>
     )

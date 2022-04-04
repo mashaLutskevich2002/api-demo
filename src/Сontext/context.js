@@ -1,22 +1,23 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {getToken} from "../Request/getToken";
 
-const TokenContext = createContext('');
+export const TokenContext = createContext('');
 
 export const useTokenContext = () =>{
-    return useContext(TokenContext);
+    return useContext(TokenContext)
 }
 
 export const ContextWrapper = ({children}) => {
-    const {token, setToken} = useState('');
+    const [token, setToken] = useState('');
+
     useEffect( () => {
         getToken().then((token)=>setToken(token))
     },[])
 
     return (
-        <ContextWrapper.Provider value={token}>
+        <TokenContext.Provider value={token}>
             {children}
-        </ContextWrapper.Provider>
+        </TokenContext.Provider>
     )
 }
-export default TokenContext;
+

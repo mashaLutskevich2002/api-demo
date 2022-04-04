@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useRef} from "react";
 import Button from "../Button/Button";
 import css from "./UsersBlock.module.css"
 import Card from "../Card/Card";
-import {getData} from "../Request/fetchData";
+
 
 const UsersBlock = (props) => {
     const perCount = 100;
@@ -14,7 +14,7 @@ const UsersBlock = (props) => {
 
     return (
         <div className={css.usersBlock} >
-            <h1 className={css.h1}>Working with GET request</h1>
+            <h1 ref={props.userGetRef} className={css.h1}>Working with GET request</h1>
             <div className={css.cardsBLock}>
                 {
                     props.data

@@ -4,15 +4,11 @@ import css from "./Registration.module.css"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import {getData, postData} from "../Request/fetchData";
-import {useForm} from "react-hook-form";
-import tokenContext from "../App";
 import {useTokenContext} from "../Сontext/context";
 
 const Registration = (props) => {
     const [position, setPosition] = useState([]);
-    // const [token, setToken] = useState('');
     const token = useTokenContext();
-
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -27,12 +23,6 @@ const Registration = (props) => {
         return position
     }
 
-    // const getToken = async () => {
-    //     let newToken = await getData('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-    //     setToken(newToken.token)
-    //     return newToken.token
-    // }
-
     const addFormData = () => {
         let formData = new FormData();
         let fileField = document.querySelector('input[type="file"]');
@@ -46,12 +36,9 @@ const Registration = (props) => {
 
     useEffect( () => {
         getPosition();
-        // console.log(token)
-
     }, []);
 
     const postUser = async () => {
-        // let token = await getToken()
         let formData = await addFormData()
         return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
     }
@@ -76,7 +63,7 @@ const Registration = (props) => {
 
     return (
         <div className={css.registration}>
-            <h1 className={css.h1}>Working with Post request</h1>
+            <h1 ref={props.userPostRef} className={css.h1}>Working with Post request</h1>
             <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name' />
             <Input placeholder='Email' onChange={(e)=>handleString(e)} id='email'/>
             <div className={css.phoneBlock}>
