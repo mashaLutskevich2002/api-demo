@@ -6,25 +6,27 @@ import Registration from "./Registration/Registration";
 import {useEffect, useState} from "react";
 import {getData} from "./Request/fetchData";
 
-function App(props) {
+function App() {
     const [data, setData] = useState([])
     const [limit, setLimit] = useState(6);
     const [newUser, setNewUser] = useState(false)
+    const [isPressLoadMore, setIsPressLoadMore] = useState(false)
 
     const getUsers  = async () => {
         let newData = await getData(`https:frontend-test-assignment-api.abz.agency/api/v1/users?&count=${limit}`);
-        return  newData.users
+        return newData.users;
     }
 
     useEffect( () => {
         getUsers().then((newData)=>setData([...newData]))
-    }, [limit, newUser]);
+    }, [limit, newUser, isPressLoadMore]);
 
     return (
         <div className={css.body}>
             <Header/>
             <Banner/>
-            <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit} limit={limit}/>
+            <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit}
+                        limit={limit} setNewUser={setNewUser} setIsPressLoadMore={setIsPressLoadMore}/>
             <Registration setNewUser={setNewUser}/>
         </div>
   );

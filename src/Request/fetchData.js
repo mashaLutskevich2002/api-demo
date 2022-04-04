@@ -9,16 +9,15 @@ export const getData = async (url) => {
 }
 
 
-export const postData = async (data, url, getToken, formData) => {
+export const postData = async (data, url, token, formData) => {
     try {
         const response = await fetch(url, {
             method: 'POST',
-            body: formData(),
+            body: formData,
             headers: {
-                'Token': await getToken().then((a)=>a.toString() )
+                'Token': token
         }});
-        const json = await response.json();
-        return json
+        return await response.json()
     }catch (error){
         console.log(error)
     }

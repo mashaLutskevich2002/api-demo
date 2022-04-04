@@ -1,14 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./Registration.module.css"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import {getData, postData} from "../Request/fetchData";
 import {useForm} from "react-hook-form";
+import tokenContext from "../App";
+import {useTokenContext} from "../Сontext/context";
 
 const Registration = (props) => {
-    const [position, setPosition] = useState([])
-    const [token, setToken] = useState('')
+    const [position, setPosition] = useState([]);
+    // const [token, setToken] = useState('');
+    const token = useTokenContext();
+
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -23,11 +27,11 @@ const Registration = (props) => {
         return position
     }
 
-    const getToken = async () => {
-        let newToken = await getData('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-        setToken(newToken.token)
-        return newToken.token
-    }
+    // const getToken = async () => {
+    //     let newToken = await getData('https://frontend-test-assignment-api.abz.agency/api/v1/token')
+    //     setToken(newToken.token)
+    //     return newToken.token
+    // }
 
     const addFormData = () => {
         let formData = new FormData();
@@ -40,13 +44,16 @@ const Registration = (props) => {
         return formData
     }
 
-    useEffect(() => {
+    useEffect( () => {
         getPosition();
+        // console.log(token)
 
     }, []);
 
     const postUser = async () => {
-        return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', getToken, addFormData)
+        // let token = await getToken()
+        let formData = await addFormData()
+        return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
     }
 
     const submit = async(e) => {

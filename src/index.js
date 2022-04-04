@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import {ContextWrapper} from "./Сontext/context";
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ContextWrapper >
+      <App />
+  </ContextWrapper>,
   document.getElementById('root')
 );
 

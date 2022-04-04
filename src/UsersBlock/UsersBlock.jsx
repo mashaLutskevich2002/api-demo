@@ -6,13 +6,10 @@ import {getData} from "../Request/fetchData";
 
 const UsersBlock = (props) => {
     const perCount = 100;
-    //
-    // useEffect( () => {
-    //     props.getUsers()
-    // }, [props.limit]);
 
     const loadMore = () => {
         props.setLimit((limit) =>  limit + 6);
+        props.setIsPressLoadMore(true);
     };
 
     return (
