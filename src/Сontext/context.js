@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {getToken} from "../Request/getToken";
 
-export const TokenContext = createContext('');
+const TokenContext = createContext('');
 
 export const useTokenContext = () =>{
     return useContext(TokenContext)

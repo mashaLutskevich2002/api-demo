@@ -23,7 +23,7 @@ const UsersBlock = (props) => {
                 }
             </div>
             {  props.data.length >= perCount - props.data.length
-                ? <Button disabled={true}  onClick={loadMore} name='Show more'/>
+                ? <Button disabled={true} name='Show more'/>
                 : <Button onClick={loadMore} name='Show more' />
             }
         </div>

@@ -40,13 +40,26 @@ const Registration = (props) => {
 
     const postUser = async () => {
         let formData = await addFormData()
-        return await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
+        const errorMessage= document.getElementById('error')
+        let createUser = await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
+        if (createUser.success === true){
+            errorMessage.style.display = 'none'
+            props.setNewUser(true)
+            props.setIsPopup(true)
+        }else{
+            errorMessage.style.display = 'none'
+            // let p = document.createElement('p');
+            // p.innerText = createUser.message;
+            // document.body.append(p);
+            alert(createUser.message);
+        }
+        return await createUser
     }
 
     const submit = async(e) => {
         e.preventDefault()
         await postUser()
-        props.setNewUser(true)
+        props.setNewUser(false)
     }
 
     const handleString = (e) =>{
@@ -81,6 +94,7 @@ const Registration = (props) => {
             <div className={css.fileBlock}>
                 <input className={css.fileUpload} type="file" id='photo' onChange={(e)=>handleString(e)}/>
             </div>
+            <div id='error' className={css.error}/>
             <Button name='Sign up' onClick={e => submit(e)}/>
         </div>
     )

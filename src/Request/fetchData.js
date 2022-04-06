@@ -1,4 +1,4 @@
-export const getData = async (url) => {
+export const getData = async (url, ) => {
     try {
         const response = await fetch(url);
         return await response.json()
@@ -17,7 +17,12 @@ export const postData = async (data, url, token, formData) => {
         }});
         return await response.json()
     }catch (error){
-        console.log(error)
+        const errorMessage = document.getElementById('error')
+        errorMessage.style.display = 'block'
+        const p = document.createElement('p');
+        p.style.color='red'
+        p.style.fontSize='20px'
+        p.innerText = 'Not all fields selected! Please fill in all the fields' ;
+        errorMessage.append(p);
     }
 }
-
