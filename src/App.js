@@ -34,7 +34,7 @@ function App() {
             <Popup setIsPopup={setIsPopup} isPopup={isPopup} />
             <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit} userGetRef={userGetRef}
                         limit={limit} setNewUser={setNewUser} setIsPressLoadMore={setIsPressLoadMore}/>
-            <Registration setNewUser={setNewUser} userPostRef={userPostRef} setIsPopup={setIsPopup}/>
+            <Registration setNewUser={setNewUser} userPostRef={userPostRef} setIsPopup={setIsPopup} executeScroll={executeScroll} userGetRef={userGetRef}/>
         </div>
   );
 }

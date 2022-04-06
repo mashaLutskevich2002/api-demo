@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./Registration.module.css"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
-import {getData, postData} from "../Request/fetchData";
+import {addErrorBLock, getData, postData} from "../Request/fetchData";
 import {useTokenContext} from "../Сontext/context";
 
 const Registration = (props) => {
@@ -41,17 +41,15 @@ const Registration = (props) => {
     const postUser = async () => {
         let formData = await addFormData()
         const errorMessage= document.getElementById('error')
-        let createUser = await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
+        const createUser = await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
         if (createUser.success === true){
             errorMessage.style.display = 'none'
             props.setNewUser(true)
             props.setIsPopup(true)
+            props.executeScroll(props.userGetRef)
         }else{
             errorMessage.style.display = 'none'
-            // let p = document.createElement('p');
-            // p.innerText = createUser.message;
-            // document.body.append(p);
-            alert(createUser.message);
+            addErrorBLock('error', `${createUser.message}`)
         }
         return await createUser
     }
@@ -59,7 +57,7 @@ const Registration = (props) => {
     const submit = async(e) => {
         e.preventDefault()
         await postUser()
-        props.setNewUser(false)
+        props.setNewUser(false) //добавился юзер в 48 строке и надо поменять состояние, чтоб при добавление нового юзера, работало без перезагрузки стр
     }
 
     const handleString = (e) =>{
