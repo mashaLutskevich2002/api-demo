@@ -1,7 +1,7 @@
 .banner{
     position: relative;
     width: 100%;
-    background-image: url("../Assets/pexels-alexandr-podvalny-1227513.jpeg");
+    background-image: url("../../Assets/pexels-alexandr-podvalny-1227513.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -21,6 +21,30 @@
     opacity: 50%;
     z-index: 2;
 }
+.bannerDark{
+    position: relative;
+    width: 100%;
+    background-image: url("../../Assets/pexels-alexandr-podvalny-1227513.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerDark:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    opacity: 65%;
+    z-index: 2;
+}
+
 
 .text{
     width: 380px;
@@ -59,6 +83,9 @@
     .banner{
         height: 650px;
     }
+    .bannerDark{
+        height: 650px;
+    }
     .text{
         margin: 164px 395px 163px 395px;
     }
@@ -66,6 +93,9 @@
 
 @media screen and (min-width: 1024px) and (max-width: 2559px) {
     .banner{
+        height: 650px;
+    }
+    .bannerDark{
         height: 650px;
     }
     .text{
@@ -77,6 +107,9 @@
     .banner{
         height: 768px;
     }
+    .bannerDark{
+        height: 768px;
+    }
     .text{
         margin: 89px 194px 88px 194px;
     }
@@ -86,10 +119,11 @@
     .banner{
         height: 500px;
     }
+    .bannerDark{
+        height: 500px;
+    }
     .text{
         width: 328px;
         height: 389px;
-
-        /*margin: 40px 16px 71px 16px;*/
     }
 }

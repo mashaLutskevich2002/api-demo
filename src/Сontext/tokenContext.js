@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {getToken} from "../Request/getToken";
+import {getToken} from "../MainPage/Request/getToken";
 
 const TokenContext = createContext('');
 

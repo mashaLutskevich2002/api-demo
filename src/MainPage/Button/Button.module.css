@@ -1,0 +1,20 @@
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4E041;
+    height: 34px;
+    width: 100px;
+    border-radius: 80px;
+    border-style: none;
+    font-size: 16px;
+    font-family: Nunito;
+    font-style: normal;
+    line-height: 26px;
+}
+
+.button:hover{
+    background: #FFE302;
+}
+
+

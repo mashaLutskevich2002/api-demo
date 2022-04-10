@@ -1,0 +1,179 @@
+.profile{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    z-index: 1;
+    background-color: #4f4f47;
+    background-image: url("https://media.istockphoto.com/photos/old-black-brick-wall-background-picture-id841676862?k=20&m=841676862&s=612x612&w=0&h=OMHHix-hMhgJkCvpVmPk1lz0yEU9wbPYvGth99BG910=");
+    position: relative;
+}
+
+.door {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 450px;
+}
+
+.doorLeft {
+    position: absolute;
+    top: 0;
+    left:  0;
+    z-index: 2;
+    width: 45%;
+    height: 400px;
+    display: inline-block;
+    background: #f5ea19;
+    border: 2px solid #333;
+    transition: transform 2s;
+    transform-origin: 0 50%;
+}
+
+.doorRight {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 400px;
+    display: inline-block;
+    background: #f5ea19;
+    border: 2px solid #333;
+    transition: transform 2s;
+    transform-origin: 100% 50%;
+}
+
+.door:hover .doorLeft {
+    transform: perspective(400px) rotateY(40deg);
+}
+
+.door:hover .doorRight {
+    transform: perspective(400px) rotateY(-40deg);
+}
+
+.name{
+    font-size: 30px;
+    color: white;
+    margin-bottom: 40px;
+    border: white solid 1px;
+    padding: 10px;
+}
+
+.name:hover{
+    font-size: 33px;
+}
+
+.img{
+    border-radius: 50px;
+}
+
+.inDoor{
+    height: 300px;
+    text-align: center;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+    padding: 10px;
+    background-image: url("https://media.istockphoto.com/photos/blue-sky-and-white-clouds-background-picture-id825778252?k=20&m=825778252&s=612x612&w=0&h=i5tqMrPeAshcGZ_Clma9t_wp9rIw1bkm0gdz2ozR7OQ=");
+    background-position: bottom;
+}
+
+.button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconTV{
+    width: 250px;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    transform: rotate(-45grad);
+}
+
+.iconTV:hover {
+    width: 265px;
+}
+
+.iron{
+    width: 180px;
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    transform: rotate(45grad);
+
+}
+
+.iron:hover{
+    transform: rotate(-10grad);
+    transition: transform 1s;
+}
+
+.cattle{
+    width: 150px;
+    position: absolute;
+    top: 55%;
+    left: 80%;
+    transform: rotate(45grad);
+}
+
+.cattle:hover{
+    width: 170px;
+    transform: rotate(20grad);
+    transition: transform 1s;
+}
+
+@media screen and (max-width: 1443px) {
+    .iconTV{
+        width:  200px;
+    }
+
+    .iconTV:hover{
+         width:  210px;
+     }
+
+    .iron{
+        width: 150px;
+    }
+
+    .cattle{
+        width: 130px;
+    }
+
+    .cattle:hover{
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 1023px){
+   .iconTV{
+       display: none;
+   }
+    .iron{
+        display: none;
+    }
+    .cattle{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 767px){
+    .door{
+        width: 70%;
+    }
+    .name{
+        width: 80%;
+        text-align: center;
+    }
+}

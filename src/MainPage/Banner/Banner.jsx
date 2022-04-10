@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import css from "./Banner.module.css"
 import Button from "../Button/Button";
+import ThemeContext from "../../Сontext/themeContext";
 
 const Banner = (props) => {
+    const theme = useContext(ThemeContext)
     return (
-            <div className={css.banner}>
-                <div className={css.text}>
+            <section className={theme.background === "white" ? css.banner: css.bannerDark}>
+                <div className={css.text} >
                     <h1 className={css.h1}>
                         Test assignment for front-end developer
                     </h1>
@@ -19,7 +21,7 @@ const Banner = (props) => {
                     </p>
                     <Button name='Sign up' onClick={()=> props.executeScroll(props.userPostRef)}/>
                 </div>
-            </div>
+            </section>
     )
 }
 

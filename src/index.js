@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import {ContextWrapper} from "./Сontext/context";
+import {ContextWrapper} from "./Сontext/tokenContext";
+import Main from "./MainPage/Main";
+import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
-  <ContextWrapper>
-      <App />
-  </ContextWrapper>,
+    <BrowserRouter>
+        <ContextWrapper>
+            <Main/>
+        </ContextWrapper>
+    </BrowserRouter>,
   document.getElementById('root')
 );

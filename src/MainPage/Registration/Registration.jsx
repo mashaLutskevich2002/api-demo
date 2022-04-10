@@ -1,14 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Button from "../Button/Button";
 import css from "./Registration.module.css"
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import {addErrorBLock, getData, postData} from "../Request/fetchData";
-import {useTokenContext} from "../Сontext/context";
+import {useTokenContext} from "../../Сontext/tokenContext";
+import ThemeContext from "../../Сontext/themeContext";
 
 const Registration = (props) => {
     const [position, setPosition] = useState([]);
     const token = useTokenContext();
+    const theme = useContext(ThemeContext)
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -73,16 +75,16 @@ const Registration = (props) => {
     }
 
     return (
-        <div className={css.registration}>
-            <h1 ref={props.userPostRef} className={css.h1}>Working with Post request</h1>
+        <section className={css.registration}>
+            <h1 ref={props.userPostRef} style={theme} className={css.h1}>Working with Post request</h1>
             <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name' />
             <Input placeholder='Email' onChange={(e)=>handleString(e)} id='email'/>
             <div className={css.phoneBlock}>
                 <Input placeholder='Phone' onChange={(e)=>handleString(e)} id='phone'/>
-                <p className={css.phone}>+38(XXX) XXX-XX-XX</p>
+                <p style={theme} className={css.phone}>+38XXXXXXXXXX</p>
             </div>
-            <div className={css.selectBLock}>
-                <p> Select your position </p>
+            <div className={css.selectBLock} >
+                <p style={theme}> Select your position </p>
                 {
                     position.map((item)=> {
                        return <Select position={item.name} onChange={(e) => handleNumber(e)} id='position_id' value={item.id}/>
@@ -94,7 +96,7 @@ const Registration = (props) => {
             </div>
             <div id='error' className={css.error}/>
             <Button name='Sign up' onClick={e => submit(e)}/>
-        </div>
+        </section>
     )
 }
 

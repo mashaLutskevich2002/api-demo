@@ -10,10 +10,30 @@
     margin-bottom: 20px;
     white-space: nowrap;
     overflow: hidden;
+    margin-left: 10px;
 }
 .card:hover{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
+.cardDark{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 328px;
+    height: 254px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 10px;
+    border: white 1px solid;
+    /*border: solid white 1px;*/
+}
+.cardDark:hover{
+    box-shadow: rgba(247, 247, 247, 0.1) 0 20px 30px;
+}
+
 .contactInformation{
     width: 100%;
     display: flex;
@@ -45,10 +65,20 @@ p{
         margin-left: 29px;
         margin-bottom: 29px;
     }
+    .cardDark{
+        width: 370px;
+        margin-left: 29px;
+        margin-bottom: 29px;
+    }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 2559px) {
     .card{
+        width: 282px;
+        margin-left: 29px;
+        margin-bottom: 29px;
+    }
+    .cardDark{
         width: 282px;
         margin-left: 29px;
         margin-bottom: 29px;
@@ -60,6 +90,12 @@ p{
         width: 344px;
         margin-left: 16px;
         margin-bottom: 16px;
+    }
+    .cardDark{
+        width: 344px;
+        margin-left: 16px;
+        margin-bottom: 16px;
+
     }
 }
 
