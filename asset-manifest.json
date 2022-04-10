@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/api-demo/static/css/main.e973da3f.css",
-    "main.js": "/api-demo/static/js/main.23991c98.js",
+    "main.js": "/api-demo/static/js/main.f3164eee.js",
     "static/media/pexels-alexandr-podvalny-1227513.jpeg": "/api-demo/static/media/pexels-alexandr-podvalny-1227513.be7665f876bbd9138501.jpeg",
-    "static/media/iron-clip-art-25.png": "/api-demo/static/media/iron-clip-art-25.3e40a742d03a7fc11ab6.png",
-    "static/media/cattle.png": "/api-demo/static/media/cattle.0ea7f36c4486f5cc98d2.png",
-    "static/media/tv.png": "/api-demo/static/media/tv.64ed5736af3bda5d4363.png",
+    "static/media/iron-clip-art-25.png": "/api-demo/static/media/iron-clip-art-25.2200a19811dc2dbb1c77.png",
+    "static/media/cattle.png": "/api-demo/static/media/cattle.cdf47fbf7a3d4c7745a9.png",
+    "static/media/tv.png": "/api-demo/static/media/tv.790ac7953d302db524dd.png",
     "static/media/Logo.svg": "/api-demo/static/media/Logo.8bb55362d01d55393ccc5476d96f0c14.svg",
     "static/media/success.png": "/api-demo/static/media/success.630ef184cbc601c2b249.png",
     "index.html": "/api-demo/index.html",
     "main.e973da3f.css.map": "/api-demo/static/css/main.e973da3f.css.map",
-    "main.23991c98.js.map": "/api-demo/static/js/main.23991c98.js.map"
+    "main.f3164eee.js.map": "/api-demo/static/js/main.f3164eee.js.map"
   },
   "entrypoints": [
     "static/css/main.e973da3f.css",
-    "static/js/main.23991c98.js"
+    "static/js/main.f3164eee.js"
   ]
 }
