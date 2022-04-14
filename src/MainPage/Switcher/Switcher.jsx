@@ -14,7 +14,6 @@ const Switcher = (props) => {
         localStorage.setItem('value', JSON.stringify(changeValue));
     }, [changeValue]);
 
-
     const toggleTheme = () => {
         if(changeValue === 'Light'){
             setChangeValue('Dark')

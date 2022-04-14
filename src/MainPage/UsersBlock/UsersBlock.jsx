@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import Button from "../Button/Button";
 import css from "./UsersBlock.module.css"
 import Card from "../Card/Card";
@@ -15,13 +15,6 @@ const UsersBlock = (props) => {
         props.setLimit((limit) =>  limit + 6);
         props.setIsPressLoadMore(true);
     };
-    const getID = (id) => {
-
-        // let a = e.target
-        // return props.data
-        //     .map((item) => console.log(item.id))
-    }
-
 
     return (
 

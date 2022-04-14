@@ -7,6 +7,7 @@ import {addErrorBLock, getData, postData} from "../Request/fetchData";
 import {useTokenContext} from "../../Сontext/tokenContext";
 import ThemeContext from "../../Сontext/themeContext";
 
+
 const Registration = (props) => {
     const [position, setPosition] = useState([]);
     const token = useTokenContext();
@@ -51,7 +52,14 @@ const Registration = (props) => {
             props.executeScroll(props.userGetRef)
         }else{
             errorMessage.style.display = 'none'
-            addErrorBLock('error', `${createUser.message}`)
+            const errorText = [createUser.fails.name, createUser.fails.email, createUser.fails.phone, createUser.fails.position_id, createUser.fails.photo ]
+            let errorTextToString = errorText.toString().replaceAll(',', ' ')
+
+            for(let i=0; i<errorText.length; i++){
+                if(errorText[i]){
+                        addErrorBLock('error', `${errorTextToString}`)
+                }
+            }
         }
         return await createUser
     }
@@ -59,7 +67,7 @@ const Registration = (props) => {
     const submit = async(e) => {
         e.preventDefault()
         await postUser()
-        props.setNewUser(false) //добавился юзер в 48 строке и надо поменять состояние, чтоб при добавление нового юзера, работало без перезагрузки стр
+        props.setNewUser(false) //добавился юзер в 49 строке и надо поменять состояние, чтоб при добавление нового юзера, работало без перезагрузки стр
     }
 
     const handleString = (e) =>{
