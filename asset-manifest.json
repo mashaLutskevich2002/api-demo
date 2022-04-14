@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/api-demo/static/css/main.e973da3f.css",
-    "main.js": "/api-demo/static/js/main.f3164eee.js",
+    "main.js": "/api-demo/static/js/main.744b0660.js",
     "static/media/pexels-alexandr-podvalny-1227513.jpeg": "/api-demo/static/media/pexels-alexandr-podvalny-1227513.be7665f876bbd9138501.jpeg",
     "static/media/iron-clip-art-25.png": "/api-demo/static/media/iron-clip-art-25.2200a19811dc2dbb1c77.png",
     "static/media/cattle.png": "/api-demo/static/media/cattle.cdf47fbf7a3d4c7745a9.png",
@@ -10,10 +10,10 @@
     "static/media/success.png": "/api-demo/static/media/success.630ef184cbc601c2b249.png",
     "index.html": "/api-demo/index.html",
     "main.e973da3f.css.map": "/api-demo/static/css/main.e973da3f.css.map",
-    "main.f3164eee.js.map": "/api-demo/static/js/main.f3164eee.js.map"
+    "main.744b0660.js.map": "/api-demo/static/js/main.744b0660.js.map"
   },
   "entrypoints": [
     "static/css/main.e973da3f.css",
-    "static/js/main.f3164eee.js"
+    "static/js/main.744b0660.js"
   ]
 }
