@@ -25,6 +25,6 @@ export const postData = async (data, url, token, formData) => {
         }});
         return await response.json()
     }catch (error){
-        addErrorBLock('error', 'Not all fields selected! Please fill in all the fields')
+        // addErrorBLock('error6', 'Not all fields selected! Please fill in all the fields')
     }
 }

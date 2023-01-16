@@ -28,6 +28,10 @@
     margin-left: 16px;
 }
 
+.nameBlock{
+    margin-bottom: 40px;
+}
+
 .selectBLock{
     display: flex;
     flex-direction: column;
@@ -46,10 +50,11 @@
 .fileBlock{
     width: 380px;
     margin-bottom: 50px;
+    margin-top: 10px;
 }
 
 .fileUpload{
-    margin-top: 47px;
+    margin-top: 5px;
 }
 
 .fileUpload::-webkit-file-upload-button {
@@ -65,6 +70,16 @@
     width: 100%;
     margin-top: -30px;
     margin-bottom: 30px;
+}
+
+.name{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7E7E7E;
+    margin-top: -46px;
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 767px){
