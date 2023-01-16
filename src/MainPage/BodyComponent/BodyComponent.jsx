@@ -36,9 +36,9 @@ const BodyComponent = (props) => {
             <Header executeScroll={executeScroll} userGetRef={userGetRef} userPostRef={userPostRef}/>
             <Banner executeScroll={executeScroll} userPostRef={userPostRef} />
             <Popup setIsPopup={setIsPopup} isPopup={isPopup} />
-            <UsersBlock getUsers={getUsers} data={data} setLimit={setLimit} userGetRef={userGetRef}
+            <UsersBlock getUsers={getUsers} setData={setData} data={data} setLimit={setLimit} userGetRef={userGetRef}
                         limit={limit} setNewUser={setNewUser} setIsPressLoadMore={setIsPressLoadMore}/>
-            <Registration setNewUser={setNewUser} userPostRef={userPostRef} setIsPopup={setIsPopup}
+            <Registration setNewUser={setNewUser} userPostRef={userPostRef} setIsPopup={setIsPopup} data={data} setData={setData}
                           executeScroll={executeScroll} userGetRef={userGetRef} setChangeTheme={props.setChangeTheme}/>
             <Switcher setChangeTheme={props.setChangeTheme} />
         </div>

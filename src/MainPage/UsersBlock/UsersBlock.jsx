@@ -16,15 +16,26 @@ const UsersBlock = (props) => {
         props.setIsPressLoadMore(true);
     };
 
+    const shareData = {
+        text: 'Поделиться в',
+        url: window.location.href,
+    };
+    const shareLink = async () => {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        }
+    };
+
     return (
 
         <section className={css.usersBlock}   >
             <h1 ref={props.userGetRef} className={css.h1} style={theme}>Working with GET request</h1>
+            <button onClick={shareLink}> share </button>
             <div className={css.cardsBLock}>
                 {
                     props.data
                     .sort((a,b) => b.registration_timestamp- a.registration_timestamp)
-                    .map((item) => <Card onClick={() => navigate(`/api-demo/user/${item.id}`)} photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />)
+                    .map((item) => <Card onClick={() => navigate(`/api-demo/user/${item.id}`)} setData={props.setData} id={item.id} photo={item.photo} name={item.name} position={item.position} email={item.email} phone={item.phone} />)
                     // console.log(item.id)
                 }
             </div>

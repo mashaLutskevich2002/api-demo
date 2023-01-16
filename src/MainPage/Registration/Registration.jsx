@@ -44,20 +44,67 @@ const Registration = (props) => {
     const postUser = async () => {
         let formData = await addFormData()
         const errorMessage= document.getElementById('error')
+        const errorMessage2= document.getElementById('error2')
+        const errorMessage3= document.getElementById('error3')
+        const errorMessage4 = document.getElementById('error4')
+        const errorMessage5 = document.getElementById('error5')
+
         const createUser = await postData(data, 'https://frontend-test-assignment-api.abz.agency/api/v1/users', token, formData)
         if (createUser.success === true){
             errorMessage.style.display = 'none'
+            errorMessage2.style.display = 'none'
+            errorMessage3.style.display = 'none'
+            errorMessage4.style.display = 'none'
+            errorMessage5.style.display = 'none'
             props.setNewUser(true)
             props.setIsPopup(true)
             props.executeScroll(props.userGetRef)
         }else{
             errorMessage.style.display = 'none'
+            errorMessage2.style.display = 'none'
+            errorMessage3.style.display = 'none'
+            errorMessage4.style.display = 'none'
+            errorMessage5.style.display = 'none'
             const errorText = [createUser.fails.name, createUser.fails.email, createUser.fails.phone, createUser.fails.position_id, createUser.fails.photo ]
-            let errorTextToString = errorText.toString().replaceAll(',', ' ')
+            // let errorTextToString = errorText.toString().replaceAll(',', ' ')
 
             for(let i=0; i<errorText.length; i++){
                 if(errorText[i]){
-                        addErrorBLock('error', `${errorTextToString}`)
+                    if(createUser.fails.name && createUser.fails.email){
+                        addErrorBLock('error', `${createUser.fails.name}`)
+                        addErrorBLock('error2', `${createUser.fails.email}`)
+                    }
+
+                    if(createUser.fails.name && createUser.fails.phone){
+                        addErrorBLock('error', `${createUser.fails.name}`)
+                        addErrorBLock('error3', `${createUser.fails.phone}`)
+                    }
+
+                    if(createUser.fails.email && createUser.fails.phone){
+                        addErrorBLock('error2', `${createUser.fails.email}`)
+                        addErrorBLock('error3', `${createUser.fails.phone}`)
+                    }
+
+                    if(createUser.fails.name){
+                        addErrorBLock('error', `${createUser.fails.name}`)
+                    }
+
+                    if(createUser.fails.email){
+                        addErrorBLock('error2', `${createUser.fails.email}`)
+                    }
+
+                    if(createUser.fails.phone){
+                        addErrorBLock('error3', `${createUser.fails.phone}`)
+                    }
+
+                    if(createUser.fails.position_id){
+                        addErrorBLock('error4', `${createUser.fails.position_id}`)
+                    }
+
+                    if(createUser.fails.photo){
+                        addErrorBLock('error5', `${createUser.fails.photo}`)
+                    }
+
                 }
             }
         }
@@ -85,13 +132,30 @@ const Registration = (props) => {
     return (
         <section className={css.registration}>
             <h1 ref={props.userPostRef} style={theme} className={css.h1}>Working with Post request</h1>
-            <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name' />
-            <Input placeholder='Email' onChange={(e)=>handleString(e)} id='email'/>
+
+            <div className={css.nameBlock}>
+                <p style={{color: "red"}}>*</p>
+                <Input placeholder='Your name' onChange={(e)=>handleString(e)} id='name' />
+                <p style={theme} className={css.name}>The name must be at least 2 characters.</p>
+            </div>
+            <div id='error' className={css.error}/>
+
+            <div>
+                <p style={{color: "red"}}>*</p>
+                <Input placeholder='Email' onChange={(e)=>handleString(e)} id='email'/>
+            </div>
+
+            <div id='error2' className={css.error}/>
+
             <div className={css.phoneBlock}>
+                <p style={{color: "red"}}>*</p>
                 <Input placeholder='Phone' onChange={(e)=>handleString(e)} id='phone'/>
                 <p style={theme} className={css.phone}>+38XXXXXXXXXX</p>
             </div>
+            <div id='error3' style={{marginTop: '15px' }} className={css.error}/>
+
             <div className={css.selectBLock} >
+                <p style={{color: "red"}}>*</p>
                 <p style={theme}> Select your position </p>
                 {
                     position.map((item)=> {
@@ -99,10 +163,12 @@ const Registration = (props) => {
                     })
                 }
             </div>
+            <div id='error4' style={{marginTop: '15px' }} className={css.error}/>
             <div className={css.fileBlock}>
+                <p style={{color: "red"}}>*</p>
                 <input className={css.fileUpload} type="file" id='photo' onChange={(e)=>handleString(e)}/>
             </div>
-            <div id='error' className={css.error}/>
+            <div id='error5' className={css.error}/>
             <Button name='Sign up' onClick={e => submit(e)}/>
         </section>
     )
